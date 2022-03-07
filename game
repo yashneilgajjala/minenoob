@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    @font-face {
+	font-family: Minecraft;
+	src: url("https://minecraft--duck132912.repl.co/minecraft.ttf");
+}
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	background: #303030 url("minecraft.jpg") repeat-x 0 0;
+	background-size: cover;
+	animation: MinecraftBackground 165s linear infinite;
+	text-align: center;
+	font-family: Minecraft;
+	text-shadow: 0.2vw 0.2vw 0 #383838;
+	min-height: 100%;
+}
+main {
+	padding: 8% 30% 0 30%;
+}
+img, main, div {
+	image-rendering: pixelated;
+}
+a {
+	color: #fff;
+	text-decoration: none;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	font-size: 1.2vw;
+	color: white;
+	margin-bottom: 0.4vw;
+}
+#logo {
+	margin-top: 5%;
+	width: 50%;
+}
+/* TODO: Make the flashing text scale down as more text is added */
+#flashingtext {
+	margin: -3.5% 0 0 47%;
+	width: 40%;
+	transform: rotate(-20deg);
+	animation: FlashingText 0.5s ease-in-out infinite;
+	color: #FFFF00;
+	font-size: 2vw;
+}
+.button {
+	/* padding: 0.2% 50vw; */
+	padding: 1% 0 3% 0;
+	margin: 0 auto 2% auto;
+	background: #7D7D7D url("buttons.png") no-repeat center;
+	background-size: 100% 300%;
+	color: #E0E0E0;
+	font-size: 1.2vw;
+	outline: 0.2vw solid #000;
+	outline-offset: -0.2vw;
+}
+.button_small {
+	width: 49%;
+	display: inline-block;
+	margin-top: 5%;
+}
+.button:hover {
+	background: #7079AA url("buttons.png") no-repeat bottom;
+	background-size: 100% 300%;
+	color: #FFFFA0;
+}
+.button:disabled, .button[disabled] {
+	background: #272727 url("buttons.png") no-repeat top;
+	background-size: 100% 300%;
+	color: #A9A9A9;
+}
+.button span {
+	vertical-align: middle;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.bold {
+	font-weight: bold;
+}
+footer .right {
+	margin-right: 10px;
+}
+ @keyframes FlashingText {
+ 0% {
+ transform: scale(1) rotate(-20deg);
+}
+ 50% {
+ transform: scale(1.05) rotate(-20deg);
+}
+ 100% {
+ transform: scale(1) rotate(-20deg);
+}
+}
+ @keyframes MinecraftBackground {
+ 0% {
+background-position: 0 0;
+}
+ 100% {
+background-position: -4096px 0;
+}
+}
+button {
+  font-family: Minecraft;
+	src: url("https://minecraft--duck132912.repl.co/minecraft.ttf");
+}
+  </style>
+	<title>Minecraft</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="https://minecraft--duck132912.repl.co/minecraft.css" />
+	<link rel="shortcut icon" href="https://minecraft--duck132912.repl.co/icon.png"
+	 type="image/x-icon" />
+	<link rel="icon" href="https://minecraft--duck132912.repl.co/icon.png"
+	 type="image/x-icon" />
+</head>
+
+<body translate="no" onpageshow="updateidea();">
+		<script>
+		   function options() {
+  addhtml("<div style='position:fixed; top:0; left:0; text-align:center; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:1.5; color:white; background-color:black; font-size:125%;' id='options'>Do you want to <button class='button'onclick='change()'>Change the flashing text</button><button onclick='openwindowform()' class='button'>Open window form</button><button onclick='closeoptions()' class='button'>Close options</button></div>");
+}
+function enablenarrations() {
+alert("thing")
+  }
+function change() {
+  text = prompt("what should the flashing text be?");
+  document.getElementById("flashingtext").innerText = text;
+  document.cookie = "text=" + text
+  if(text == "" || text == null) {
+    change();
+  }
+  remove("options")
+}
+function openwindowform() {
+    remove("options")
+    window.open("https://minecraft--duck132912.repl.co", "", "width=10000,height=10000");
+}
+function closeoptions() {
+  remove("options")
+}
+function quit() {
+  close();
+  window.location = "";
+}
+function how() {
+  addhtml("<div id='stophow' style='color: red; position:absolute; left:0; bottom:0; font-weight: bold; font-size: 60px;z-index: 2;cursor: pointer;' onclick='stophow();'>x</div><div style='position:fixed; top:0; left:0; text-align:center; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:1; color:white; background-color:black; font-size:125%;' id='instructions'>Use W= forward A = left s = back d = right to move around, T to talk, 1 to 9 to change blocks, B to get new blocks, mouse to look around, R to respawn, ESC to pause and G to teleport a random player into your world. To go back to the starting screen when you are in-game press ESC and CLICK THE RED X IN THE CORNER OF THE SCREEN TO CLOSE IN THE REAL GAME THE RED X IS ON THE TOP RIGHT</div>")
+}
+		</script>
+		
+		<img alt="Minecraft" id="logo" src="https://minecraft--duck132912.repl.co/minecraft.svg"/>
+<div id="flashingtext">Made by Yashneil Gajjala</div>
+<main>
+<button class="button" onclick="play()">Singleplayer</button>
+<br>
+<button class="button" onclick="playmulti()" id="playmulti">Multiplayer</button> <br>
+<button class="button" onclick="alert('Thanks to classic.minecraft.net for help in the development process. :)')">Credits</button>
+<button class="button" onclick="how()">How to play</button>
+<audio id="audio">
+  <source src="minecraft.mp4">
+</audio>
+<button id="button" class="button">Play audio</button>
+<button class="button button_small left" onclick="change()">Options</button>
+<button class="button button_small right" onclick="quit();">Quit Game</button>
+<script>
+  window.onload = 'getthecookie()'
+function getthecookie() {
+	text
+}
+function play() {
+  addhtml("<iframe src='https://classic.minecraft.net' id='game'></iframe><div id='X' style='color: red; position:absolute; right:0; top:0; font-weight: bold; font-size: 70px;z-index: 2;cursor: pointer;' onclick='stop();'>x</div><div onclick='stop();' style='position:fixed; top:0; left:0; text-align:center; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:1.5; color:white; background-color:black; font-size:165%;' id='loading'>LOADING...</div>");
+}
+
+function stophow() {
+  remove("instructions");
+  remove("stophow");
+  
+}
+function stop() {
+  remove("game");
+  remove("X");
+  remove("loading");
+  
+}
+function stopmulti() {
+  remove("game");
+  remove("X");
+  remove("blahblah");
+  remove("loading");
+  
+}
+function nomulti() {
+  remove("nomulti");
+  remove("blahblah");
+  
+}
+function playmulti() {
+  addhtml("<div id='blahblah' style='position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0;'><input style='width: 90%; outline: none;' type='text' placeholder='multyplayer game url add https' id='multyurl' autocomplete='off' /><input type='button' onclick='startmultigame()' value='summit' /></div><div id='nomulti' style='color: red; position:absolute; left:0; bottom:0; font-weight: bold; font-size: 70px;z-index: 2;cursor: pointer;' onclick='nomulti();'>x</div>");
+}
+function startmultigame() {
+  remove("nomulti")
+  var multi = document.getElementById("multyurl").value;
+  addhtml("<iframe src="+ multi +" id='game'></iframe><div id='X' style='color: red; position:absolute; right:0; top:0; font-weight: bold; font-size: 70px;z-index: 2;cursor: pointer;' onclick='stopmulti();'>x</div><div onclick='stop();' style='position:fixed; top:0; left:0; text-align:center; bottom:0; right:0; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:1.5; color:white; background-color:black; font-size:165%;' id='loading'>LOADING...</div> ")
+  }
+function remove(elementId) {
+  var element = document.getElementById(elementId);
+  element.parentNode.removeChild(element);
+}
+function addhtml(html) {
+  document.body.innerHTML = document.body.innerHTML + html;
+}
+</script>
+<script type="text/javascript">
+function updateidea() {
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  }
+  else if (Notification.permission === "granted") {
+    var notification = new Notification("updates? chat--duck132912.repl.co I am duck1321912");
+  }
+  else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      if (permission === "granted") {
+        var notification = new Notification("updates? chat--duck132912.repl.co I am duck1321912");
+      }
+    });
+  }
+}Notification.requestPermission().then(function(result) {
+  console.log(result);
+});function spawnNotification(body, icon, title) {
+  var options = {
+      body: body,
+      icon: icon
+  };
+}
+var button = document.getElementById("button");
+var audio = document.getElementById("audio");
+button.addEventListener("click", function(){
+  if(audio.paused){
+    audio.play();
+    button.innerHTML = "Pause audio";
+  } else {
+    audio.pause();
+    button.innerHTML = "Play audio";
+}
+});
+</script>
+</main>
+</body>
+</html>
